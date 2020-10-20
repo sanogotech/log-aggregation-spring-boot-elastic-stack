@@ -1,6 +1,10 @@
 ## Log aggregation with Spring Boot, Elastic Stack and Docker
 
+```
 sudo yum install java-11-openjdk-devel
+alternatives --config javac
+alternatives --config java
+```
 
 In a microservices architecture, a single business operation might trigger a chain of downstream microservice calls, which can be pretty challenging to debug. Things, however, can be easier when the logs of all microservices are centralized and each log event contains details that allow us to trace the interactions between the applications.
 
