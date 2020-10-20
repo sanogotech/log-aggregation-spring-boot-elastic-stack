@@ -16,6 +16,8 @@ services:
     ports:
       - "25826:25826"
       - "5044:5044"
+    environment:
+      - LS_JAVA_OPTS="-Xms2g -Xmx2g"
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro                # Pipeline configuration
     restart: on-failure
@@ -26,6 +28,8 @@ services:
     image: docker.elastic.co/kibana/kibana:7.2.0
     ports:
       - "5601:5601"
+    environment:
+      - KS_JAVA_OPTS="-Xms2g -Xmx2g"
     restart: on-failure
     depends_on:
       - elasticsearch
