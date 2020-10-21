@@ -4,6 +4,7 @@ services:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    container_name: elasticsearch
     ports:
       - "9200:9200"
     environment:
@@ -35,6 +36,11 @@ services:
      #  - KS_JAVA_OPTS="-Xms2g -Xmx2g"
     mem_limit: 1g
     restart: on-failure
+    environment:
+      - SERVER_NAME=kibana.localhost
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_HOST=elasticsearch
     depends_on:
       - elasticsearch
 
