@@ -1,5 +1,5 @@
-#version: "3.5"
-version: "2.3"
+version: "3.5"
+#version: "2.3"
 services:
 
   elasticsearch:
@@ -8,7 +8,7 @@ services:
       - "9200:9200"
     environment:
       - "discovery.type=single-node"
-      - ES_JAVA_OPTS="-Xms2g -Xmx2g"
+      #- ES_JAVA_OPTS="-Xms2g -Xmx2g"
     mem_limit: 4g
     volumes:
       - ./elasticsearch/data:/usr/share/elasticsearch/data:rw              # Persistence data
@@ -18,8 +18,8 @@ services:
     ports:
       - "25826:25826"
       - "5044:5044"
-    environment:
-      - LS_JAVA_OPTS="-Xms2g -Xmx2g"
+    #environment:
+     # - LS_JAVA_OPTS="-Xms2g -Xmx2g"
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro                # Pipeline configuration
     mem_limit: 2g
