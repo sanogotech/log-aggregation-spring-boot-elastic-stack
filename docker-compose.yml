@@ -9,6 +9,7 @@ services:
     environment:
       - "discovery.type=single-node"
       - ES_JAVA_OPTS="-Xms2g -Xmx2g"
+    mem_limit: 4g
     volumes:
       - ./elasticsearch/data:/usr/share/elasticsearch/data:rw              # Persistence data
 
@@ -21,6 +22,7 @@ services:
       - LS_JAVA_OPTS="-Xms2g -Xmx2g"
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro                # Pipeline configuration
+    mem_limit: 2g
     restart: on-failure
     depends_on:
       - elasticsearch
